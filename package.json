@@ -1,0 +1,21 @@
+{
+  "name": "data-processing-cli",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/sunlaa/data-processing-cli#readme",
+  "bugs": {
+    "url": "https://github.com/sunlaa/data-processing-cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunlaa/data-processing-cli.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/main.js"
+  }
+}
