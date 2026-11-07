@@ -1,7 +1,9 @@
 import * as readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
-import { resolveArgs } from './utils/argResolver.js';
+import { extractCommand } from './utils/argResolver.js';
 import { currentDir, up, cd, ls } from './navigations.js';
+import { csvToJson } from './commands/csv-to-json.js';
+import { jsonToCsv } from './commands/json-to-csv.js';
 
 const rl = readline.createInterface({
   input,
@@ -21,16 +23,22 @@ rl.prompt();
 
 rl.on('line', async (line) => {
   try {
-    const { command, args } = resolveArgs(line);
+    const { command, args } = extractCommand(line);
     switch (command) {
       case 'up':
         up();
         break;
       case 'cd':
-        await cd(args[0]);
+        await cd(args);
         break;
       case 'ls':
         await ls();
+        break;
+      case 'csv-to-json':
+        await csvToJson(args);
+        break;
+      case 'json-to-csv':
+        await jsonToCsv(args);
         break;
       case '.exit':
         exitUtil();

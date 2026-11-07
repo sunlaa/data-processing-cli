@@ -1,6 +1,7 @@
 import path from 'node:path';
 import os from 'node:os';
 import fsPromises from 'node:fs/promises';
+import { resolveArgs } from './utils/argResolver.js';
 
 export let currentDir = os.homedir();
 
@@ -8,7 +9,10 @@ export const up = () => {
   currentDir = path.resolve(currentDir, '..');
 };
 
-export const cd = async (dir) => {
+export const cd = async (args) => {
+  const { positionals } = resolveArgs(args);
+  const dir = positionals[0];
+
   if (!dir) {
     throw new Error('Invalid input');
   }
