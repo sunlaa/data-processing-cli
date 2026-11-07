@@ -4,6 +4,7 @@ import { extractCommand } from './utils/argResolver.js';
 import { currentDir, up, cd, ls } from './navigations.js';
 import { csvToJson } from './commands/csv-to-json.js';
 import { jsonToCsv } from './commands/json-to-csv.js';
+import { count } from './commands/count.js';
 
 const rl = readline.createInterface({
   input,
@@ -39,6 +40,9 @@ rl.on('line', async (line) => {
         break;
       case 'json-to-csv':
         await jsonToCsv(args);
+        break;
+      case 'count':
+        await count(args);
         break;
       case '.exit':
         exitUtil();
