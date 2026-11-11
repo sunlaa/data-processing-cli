@@ -5,6 +5,10 @@ import { currentDir, up, cd, ls } from './navigations.js';
 import { csvToJson } from './commands/csv-to-json.js';
 import { jsonToCsv } from './commands/json-to-csv.js';
 import { count } from './commands/count.js';
+import { hash } from './commands/hash.js';
+import { hashCompare } from './commands/hash-compare.js';
+import { encrypt } from './commands/encrypt.js';
+import { decrypt } from './commands/decrypt.js';
 
 const rl = readline.createInterface({
   input,
@@ -43,6 +47,18 @@ rl.on('line', async (line) => {
         break;
       case 'count':
         await count(args);
+        break;
+      case 'hash':
+        await hash(args);
+        break;
+      case 'hash-compare':
+        await hashCompare(args);
+        break;
+      case 'encrypt':
+        await encrypt(args);
+        break;
+      case 'decrypt':
+        await decrypt(args);
         break;
       case '.exit':
         exitUtil();
