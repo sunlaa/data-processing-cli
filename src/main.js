@@ -9,6 +9,7 @@ import { hash } from './commands/hash.js';
 import { hashCompare } from './commands/hash-compare.js';
 import { encrypt } from './commands/encrypt.js';
 import { decrypt } from './commands/decrypt.js';
+import { logStats } from './commands/log-stats.js';
 
 const rl = readline.createInterface({
   input,
@@ -59,6 +60,9 @@ rl.on('line', async (line) => {
         break;
       case 'decrypt':
         await decrypt(args);
+        break;
+      case 'log-stats':
+        await logStats(args);
         break;
       case '.exit':
         exitUtil();
